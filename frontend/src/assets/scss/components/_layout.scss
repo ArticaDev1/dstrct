@@ -1,0 +1,110 @@
+html {
+  overflow: visible !important;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  min-width: 320px;
+  background-color: var(--color-base-background);
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: var(--window-safe-height);
+  width: var(--page-width);
+  overflow: hidden;
+  position: relative;
+}
+
+footer, header {
+  flex: 0 0 auto;
+}
+
+footer {
+  position: relative;
+  z-index: 2;
+}
+
+main {
+  flex: 1 1 auto;
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-image: url("~@/assets/img/noize.gif");
+    background-position: center center;
+    background-repeat: repeat;
+    opacity: 0.75;
+    mix-blend-mode: multiply;
+  }
+}
+
+section {
+  margin-bottom: var(--section-margin);
+  position: relative;
+  z-index: 2;
+}
+
+img {
+  display: block;
+  user-select: none;
+  &.lazyload, &.lazyloading {
+    opacity: 0;
+    visibility: hidden;
+  }
+  &.lazyloaded {
+    opacity: 1;
+    visibility: visible;
+    transition-duration: var(--animation-duration-3);
+    transition-timing-function: var(--transition-timing-function-1);
+    transition-property: opacity, visibility;
+  }
+}
+
+.image {
+  display: block;
+  position: relative;
+  img {
+    width: 100%;
+    height: auto;
+  }
+  &_contain, &_cover {
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+    }
+  }
+  &_cover {
+    overflow: hidden;
+    img {
+      object-fit: cover;
+    }
+  }
+  &_contain {
+    img {
+      object-fit: contain;
+    }
+  }
+}
+
+.image-content {
+  background: var(--color-content-image-bg);
+  --image-size: 100%;
+  &::before {
+    content: '';
+    display: block;
+    padding-top: var(--image-size);
+  }
+}

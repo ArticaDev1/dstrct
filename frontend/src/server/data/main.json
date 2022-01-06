@@ -1,0 +1,64 @@
+{
+  "date": "",
+  "socials": [
+    {
+      "type": "instagram",
+      "href": "https://instagram.com/juliia_des"
+    }
+  ],
+  "contacts": [
+    { 
+      "type": "phone",
+      "value": "+7 (919) 244-84-04"
+    }, {
+      "type": "email",
+      "value": "j_doors@mail.ru"
+    }
+  ],
+  "selectedProjects": [
+    {
+      "id": 1,
+      "image": "/assets/img/content/selectedProjects/1.jpg",
+      "title": "ЖК Метрополия"
+    }, {
+      "id": 4,
+      "image": "/assets/img/content/selectedProjects/2.jpg",
+      "title": "ЖК Сады Пекина"
+    }, {
+      "id": 3,
+      "image": "/assets/img/content/selectedProjects/3.jpg",
+      "title": "ЖК Резиденции Архитекторов"
+    }, {
+      "id": 5,
+      "image": "/assets/img/content/selectedProjects/4.jpg",
+      "title": "ЖК Солнечный Олимп"
+    }
+  ],
+  "projects": [
+    {
+      "id": 3,
+      "image": "/assets/img/content/projectsSection/1.jpg",
+      "title": "Фрагмент обеденной зоны из проекта ЖК Резиденции Архитекторов"
+    }, {
+      "id": 1,
+      "image": "/assets/img/content/projectsSection/2.jpg",
+      "title": "ТВ зона в гостиной из проекта ЖК Метрополия"
+    }, {
+      "id": 4,
+      "image": "/assets/img/content/projectsSection/3.jpg",
+      "title": "Обеденная группа в апартаментах ЖК Сады Пекина"
+    }, {
+      "id": 4,
+      "image": "/assets/img/content/projectsSection/4.jpg",
+      "title": "Мастер-спальня в проекте апартаментов ЖК Сады Пекина"
+    }, {
+      "id": 2,
+      "image": "/assets/img/content/projectsSection/5.jpg",
+      "title": "Фрагмент кухни-гостиной в ЖК BIG TIME"
+    }, {
+      "id": 5,
+      "image": "/assets/img/content/projectsSection/6.jpg",
+      "title": "Детская в проекте ЖК Солнечный Олимп"
+    }
+  ]
+}
