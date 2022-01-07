@@ -1,0 +1,17 @@
+fields:
+    project_id:
+        label: Проект
+        showSearch: true
+        span: left
+        required: 1
+        type: dropdown
+    attribute_id:
+        label: Атрибут
+        showSearch: true
+        span: auto
+        type: dropdown
+    value:
+        label: Значение
+        span: auto
+        required: 1
+        type: text

@@ -1,0 +1,8 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table arctica_services_service'
+    - builder_table_create_arctica_services_service.php
+1.0.3:
+    - 'Updated table arctica_services_service'
+    - builder_table_update_arctica_services_service.php

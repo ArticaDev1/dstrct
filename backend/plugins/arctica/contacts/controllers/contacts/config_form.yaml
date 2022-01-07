@@ -1,0 +1,10 @@
+name: Contacts
+form: $/arctica/contacts/models/contact/fields.yaml
+modelClass: Arctica\Contacts\Models\Contact
+defaultRedirect: arctica/contacts/contacts
+create:
+    redirect: 'arctica/contacts/contacts/update/:id'
+    redirectClose: arctica/contacts/contacts
+update:
+    redirect: arctica/contacts/contacts
+    redirectClose: arctica/contacts/contacts

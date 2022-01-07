@@ -1,0 +1,13 @@
+columns:
+    name:
+        label: Название
+        type: text
+    slug:
+        label: slug
+        type: text
+    page_slug:
+        label: 'Слаг страницы'
+        type: text
+    price:
+        label: Цена
+        type: number

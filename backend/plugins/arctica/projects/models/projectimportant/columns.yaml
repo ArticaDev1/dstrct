@@ -1,0 +1,11 @@
+columns:
+    project_id:
+        label: Проект
+        type: text
+        searchable: true
+        sortable: true
+        relation: project
+        select: name
+    value:
+        label: 'Что было важно'
+        type: text

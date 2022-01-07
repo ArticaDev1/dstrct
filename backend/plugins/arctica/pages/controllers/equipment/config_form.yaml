@@ -1,0 +1,16 @@
+name: Equipment
+modelClass: Arctica\Pages\Models\Equipment
+form: $/arctica/pages/models/equipment/fields.yaml
+defaultRedirect: arctica/pages/equipment/update/1
+create:
+    title: 'Редактирование страницы комплектации'
+    redirect: arctica/pages/equipment/update/1
+    redirectClose: /
+    flashSave: 'Страница комплектации успешно отредактирована'
+update:
+    title: 'Редактирование страницы комплектации'
+    redirect: arctica/pages/equipment/update/1
+    redirectClose: /
+    flashSave: 'Страница комплектации успешно отредактирована'
+    flashDelete: 'Страница комплектации успешно отредактирована'
+preview: {  }

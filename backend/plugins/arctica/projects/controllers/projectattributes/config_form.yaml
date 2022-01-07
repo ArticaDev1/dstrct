@@ -1,0 +1,11 @@
+name: ProjectAttributes
+modelClass: Arctica\Projects\Models\ProjectAttributes
+form: $/arctica/projects/models/projectattributes/fields.yaml
+defaultRedirect: arctica/projects/projectattributes
+create:
+    redirect: 'arctica/projects/projectattributes/update/:id'
+    redirectClose: arctica/projects/projectattributes
+update:
+    redirect: arctica/projects/projectattributes
+    redirectClose: arctica/projects/projectattributes
+preview: {  }

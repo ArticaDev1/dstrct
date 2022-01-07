@@ -1,0 +1,10 @@
+columns:
+    id:
+        label: id
+        type: number
+    estimate:
+        label: estimate
+        type: text
+    slug:
+        label: slug
+        type: text

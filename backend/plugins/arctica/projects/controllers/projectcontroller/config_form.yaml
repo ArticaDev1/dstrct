@@ -1,0 +1,17 @@
+name: ProjectController
+modelClass: Arctica\Projects\Models\Project
+form: $/arctica/projects/models/project/fields.yaml
+defaultRedirect: arctica/projects/projectcontroller
+create:
+    title: 'Создание проекта'
+    redirect: 'arctica/projects/projectcontroller/update/:id'
+    redirectClose: arctica/projects/projectcontroller
+    flashSave: 'Проект создан'
+update:
+    title: 'Обновление проекта'
+    redirect: 'arctica/projects/projectcontroller/update/:id'
+    redirectClose: arctica/projects/projectcontroller
+    flashSave: 'Проект обновлен'
+    flashDelete: 'Проект удален'
+preview:
+    title: 'Просмотр проекта'

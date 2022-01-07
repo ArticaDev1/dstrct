@@ -1,0 +1,46 @@
+fields:
+    name:
+        label: 'Название услуги'
+        span: auto
+        placeholder: Комплектация
+        required: 1
+        type: text
+    slug:
+        label: slug
+        span: auto
+        placeholder: komplektacija
+        required: 1
+        preset:
+            field: name
+            type: slug
+        type: text
+        comment: 'Уникальное название услуги (заполняется автоматически, менять при необходимости)'
+    about:
+        label: 'Описание услуги'
+        size: large
+        span: full
+        placeholder: 'Помощь в выборе квартиры на этапе ее покупки поможет вам избавится от неожиданностей при создании дизайн-проекта и сэкономить на работах. Приобретая квартиру необходимо провести ее функциональный анализ .....'
+        required: 1
+        type: textarea
+        comment: 'Описание услуги (65 к символов)'
+    price:
+        label: Цена
+        span: auto
+        type: number
+    price_description:
+        label: 'Описание цены'
+        span: auto
+        attributes:
+            safsdf: fsdfdssfd
+        type: text
+        comment: 'Заполняется если пустая цена'
+    page_slug:
+        label: 'Слаг страницы'
+        span: auto
+        type: text
+        comment: 'Заполняется только если у услуги есть страница'
+    signature:
+        label: 'Подпись к услуге'
+        span: auto
+        type: text
+        comment: 'Как у дизайн-проекта'

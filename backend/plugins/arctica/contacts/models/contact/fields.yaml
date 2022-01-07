@@ -1,0 +1,21 @@
+fields:
+    type_id:
+        label: 'Тип контакта'
+        showSearch: true
+        span: auto
+        required: 1
+        type: dropdown
+        comment: 'Выбирать из списка'
+    value:
+        label: Значение
+        span: auto
+        required: 1
+        type: text
+        comment: 'Телефон, почта или ссылки на соц сети'
+    is_active:
+        label: Активно
+        span: auto
+        default: 1
+        required: 0
+        type: checkbox
+        comment: 'Показывается ли контакт'

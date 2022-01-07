@@ -1,0 +1,17 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table arctica_pages_equipment'
+    - builder_table_create_arctica_pages_equipment.php
+1.0.3:
+    - 'Drop table arctica_pages_equipment'
+    - builder_table_delete_arctica_pages_equipment.php
+1.0.4:
+    - 'Created table arctica_pages_main'
+    - builder_table_create_arctica_pages_main.php
+1.0.5:
+    - 'Created table arctica_pages_equipment'
+    - builder_table_create_arctica_pages_equipment_2.php
+1.0.6:
+    - 'Created table arctica_pages_monitoring'
+    - builder_table_create_arctica_pages_monitoring.php

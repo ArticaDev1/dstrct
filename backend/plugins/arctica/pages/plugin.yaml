@@ -1,0 +1,20 @@
+plugin:
+    name: 'arctica.pages::lang.plugin.name'
+    description: 'arctica.pages::lang.plugin.description'
+    author: Arctica
+    icon: oc-icon-eye
+    homepage: ''
+navigation:
+    main-menu-item:
+        label: Страницы
+        url: arctica/pages/main/update/1
+        icon: icon-book
+        sideMenu:
+            side-menu-item:
+                label: Главная
+                url: arctica/pages/main/update/1
+                icon: icon-spinner
+            side-menu-item2:
+                label: Комплектация
+                url: arctica/pages/equipment/update/1
+                icon: icon-dropbox

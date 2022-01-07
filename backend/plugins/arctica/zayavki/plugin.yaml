@@ -1,0 +1,11 @@
+plugin:
+    name: 'arctica.zayavki::lang.plugin.name'
+    description: 'arctica.zayavki::lang.plugin.description'
+    author: Arctica
+    icon: oc-icon-dollar
+    homepage: ''
+navigation:
+    main-menu-item:
+        label: Заявки
+        url: arctica/zayavki/application
+        icon: icon-dollar

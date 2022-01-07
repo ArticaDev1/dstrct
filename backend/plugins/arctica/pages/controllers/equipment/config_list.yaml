@@ -1,0 +1,12 @@
+title: Комплектация
+modelClass: Arctica\Pages\Models\Equipment
+list: $/arctica/pages/models/equipment/columns.yaml
+recordUrl: arctica/pages/equipment/update/1
+noRecordsMessage: 'backend::lang.list.no_records'
+recordsPerPage: 20
+showSetup: true
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'

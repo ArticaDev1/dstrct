@@ -1,0 +1,4 @@
+title: ProjectsImportant
+modelClass: Arctica\Projects\Models\ProjectImportant
+toolbar:
+    buttons: reorder_toolbar

@@ -1,0 +1,16 @@
+columns:
+    type_id:
+        label: 'Тип контакта'
+        type: text
+        searchable: true
+        sortable: true
+        select: name
+        relation: type
+    value:
+        label: Контакт
+        type: text
+        searchable: true
+        sortable: true
+    is_active:
+        label: Активность
+        type: switch

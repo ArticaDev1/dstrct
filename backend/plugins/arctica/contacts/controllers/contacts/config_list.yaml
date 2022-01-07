@@ -1,0 +1,12 @@
+list: $/arctica/contacts/models/contact/columns.yaml
+modelClass: Arctica\Contacts\Models\Contact
+title: Contacts
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'arctica/contacts/contacts/update/:id'

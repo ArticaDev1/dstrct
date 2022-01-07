@@ -1,0 +1,12 @@
+title: 'Важные фичи'
+modelClass: Arctica\Projects\Models\ProjectImportant
+list: $/arctica/projects/models/projectimportant/columns.yaml
+recordUrl: 'arctica/projects/projectsimportant/update/:id'
+noRecordsMessage: 'backend::lang.list.no_records'
+recordsPerPage: 20
+showCheckboxes: true
+showSorting: 0
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'

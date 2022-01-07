@@ -1,0 +1,20 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table arctica_projects_projects'
+    - builder_table_create_arctica_projects_projects.php
+1.0.3:
+    - 'Created table arctica_projects_projects_attributes'
+    - builder_table_create_arctica_projects_projects_attributes.php
+1.0.4:
+    - 'Created table arctica_projects_attributes'
+    - builder_table_create_arctica_projects_attributes.php
+1.0.5:
+    - 'Created table arctica_projects_projects_important'
+    - builder_table_create_arctica_projects_projects_important.php
+1.0.6:
+    - 'Updated table arctica_projects_projects'
+    - builder_table_update_arctica_projects_projects.php
+1.0.7:
+    - 'Updated table arctica_projects_attributes'
+    - builder_table_update_arctica_projects_attributes.php

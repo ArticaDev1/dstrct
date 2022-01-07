@@ -1,0 +1,13 @@
+fields:
+    project_id:
+        label: Проект
+        showSearch: true
+        span: auto
+        required: 1
+        type: dropdown
+    value:
+        label: 'Что бы важно для заказчика'
+        size: ''
+        span: auto
+        required: 1
+        type: textarea

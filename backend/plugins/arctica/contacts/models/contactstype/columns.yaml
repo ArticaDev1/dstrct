@@ -1,0 +1,13 @@
+columns:
+    id:
+        label: id
+        type: number
+    name:
+        label: name
+        type: text
+    is_social:
+        label: is_social
+        type: text
+    slug:
+        label: slug
+        type: text

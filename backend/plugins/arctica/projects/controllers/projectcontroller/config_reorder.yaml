@@ -1,0 +1,4 @@
+title: ProjectController
+modelClass: Arctica\Projects\Models\Project
+toolbar:
+    buttons: reorder_toolbar

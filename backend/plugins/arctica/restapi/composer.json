@@ -1,0 +1,17 @@
+{
+    "name": "arctica/rest_api-plugin",
+    "type": "october-plugin",
+    "description": "RestApi plugin",
+    "keywords": ["rest", "api"],
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Arctica\\RestApi\\": ""
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}

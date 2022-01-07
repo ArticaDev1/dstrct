@@ -1,0 +1,16 @@
+name: Атрибуты
+modelClass: Arctica\Projects\Models\Attribute
+form: $/arctica/projects/models/attribute/fields.yaml
+defaultRedirect: arctica/projects/attributes
+create:
+    title: 'Создание атрибута'
+    redirect: 'arctica/projects/attributes/update/:id'
+    redirectClose: arctica/projects/attributes
+    flashSave: 'Успешно создан атрибут'
+update:
+    title: 'Редактирование атрибута'
+    redirect: arctica/projects/attributes
+    redirectClose: arctica/projects/attributes
+    flashSave: 'Успешно отредактирован атрибут'
+    flashDelete: 'Успешно удален атрибут'
+preview: {  }

@@ -1,0 +1,4 @@
+columns:
+    about:
+        label: Заголовок
+        type: text

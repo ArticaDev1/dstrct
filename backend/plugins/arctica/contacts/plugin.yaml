@@ -1,0 +1,11 @@
+plugin:
+    name: 'arctica.contacts::lang.plugin.name'
+    description: 'arctica.contacts::lang.plugin.description'
+    author: Arctica
+    icon: oc-icon-instagram
+    homepage: ''
+navigation:
+    main-menu-item:
+        label: Контакты
+        url: arctica/contacts/contacts
+        icon: icon-instagram

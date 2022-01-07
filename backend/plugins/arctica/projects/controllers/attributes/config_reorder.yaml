@@ -1,0 +1,4 @@
+title: Attributes
+modelClass: Arctica\Projects\Models\Attribute
+toolbar:
+    buttons: reorder_toolbar

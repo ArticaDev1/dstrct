@@ -1,0 +1,19 @@
+columns:
+    project_id:
+        label: Проект
+        type: text
+        searchable: true
+        sortable: true
+        relation: project
+        select: name
+    attribute_id:
+        label: Артрибут
+        type: text
+        searchable: true
+        sortable: true
+        relation: attribute
+        select: name
+    value:
+        label: Значение
+        type: text
+        searchable: true

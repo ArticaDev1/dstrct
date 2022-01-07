@@ -1,0 +1,18 @@
+fields:
+    about:
+        label: Заголовок
+        size: large
+        span: full
+        type: textarea
+        comment: 'Заголовок на главной'
+    images:
+        label: Фотографии
+        mode: image
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        maxFiles: '7'
+        span: full
+        type: fileupload
+        comment: 'Не более 7 шт'

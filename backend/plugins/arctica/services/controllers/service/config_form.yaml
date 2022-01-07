@@ -1,0 +1,17 @@
+name: Service
+modelClass: Arctica\Services\Models\Service
+form: $/arctica/services/models/service/fields.yaml
+defaultRedirect: arctica/services/service
+create:
+    title: 'Создание услуги'
+    redirect: 'arctica/services/service/update/:id'
+    redirectClose: arctica/services/service
+    flashSave: 'Услуга создана'
+update:
+    title: 'Редактирование услуги'
+    redirect: arctica/services/service
+    redirectClose: arctica/services/service
+    flashSave: 'Услуга отредактирована'
+    flashDelete: 'Услуга удалена'
+preview:
+    title: 'Просмотр услуги'

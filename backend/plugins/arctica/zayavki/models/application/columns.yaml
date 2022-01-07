@@ -1,0 +1,19 @@
+columns:
+    created_at:
+        label: Поступила
+        type: datetime
+        searchable: false
+        sortable: true
+    phone:
+        label: 'Номер телефона'
+        type: text
+        searchable: true
+        sortable: false
+    name:
+        label: Имя
+        type: text
+        searchable: true
+        sortable: true
+    from:
+        label: 'Со страницы'
+        type: text

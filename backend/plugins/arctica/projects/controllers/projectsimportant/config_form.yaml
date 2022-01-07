@@ -1,0 +1,15 @@
+name: 'Важные фичи'
+modelClass: Arctica\Projects\Models\ProjectImportant
+form: $/arctica/projects/models/projectimportant/fields.yaml
+defaultRedirect: arctica/projects/projectsimportant
+create:
+    title: Создание
+    redirect: 'arctica/projects/projectsimportant/update/:id'
+    redirectClose: arctica/projects/projectsimportant
+    flashSave: Успешно
+update:
+    title: Редактирование
+    redirect: arctica/projects/projectsimportant
+    redirectClose: arctica/projects/projectsimportant
+    flashSave: Успешно
+    flashDelete: Успешно

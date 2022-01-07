@@ -1,0 +1,16 @@
+plugin:
+    name: 'arctica.services::lang.plugin.name'
+    description: 'arctica.services::lang.plugin.description'
+    author: Arctica
+    icon: oc-icon-crop
+    homepage: ''
+navigation:
+    main-menu-item:
+        label: Услуги
+        url: arctica/services/service
+        icon: icon-archive
+        sideMenu:
+            side-menu-item:
+                label: Услуги
+                url: arctica/services/service
+                icon: icon-sitemap

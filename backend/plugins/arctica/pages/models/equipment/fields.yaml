@@ -1,0 +1,17 @@
+fields:
+    estimate:
+        label: Смета
+        size: ''
+        span: full
+        type: textarea
+        comment: 'Описание сметы'
+    images:
+        label: Галерея
+        mode: image
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: full
+        type: fileupload
+        comment: 'Фотографии на страницы "Комплектация"'

@@ -1,0 +1,11 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table arctica_contacts_contacts_type'
+    - builder_table_create_arctica_contacts_contacts_type.php
+1.0.3:
+    - 'Created table arctica_contacts_contacts'
+    - builder_table_create_arctica_contacts_contacts.php
+1.0.4:
+    - 'Updated table arctica_contacts_contacts_type'
+    - builder_table_update_arctica_contacts_contacts_type.php

@@ -1,0 +1,12 @@
+name: Main
+modelClass: Arctica\Pages\Models\Main
+form: $/arctica/pages/models/main/fields.yaml
+defaultRedirect: arctica/pages/main
+create:
+    redirect: 'arctica/pages/main/update/:id'
+    redirectClose: arctica/pages/main
+update:
+    title: 'Редактирование главной страницы'
+    redirect: arctica/pages/main/update/1
+    redirectClose: /
+    flashSave: 'Страница успешно обновлена'

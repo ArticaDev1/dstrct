@@ -1,0 +1,52 @@
+fields:
+    name:
+        label: 'Название проекта'
+        span: left
+        placeholder: 'ЖК Метрополия'
+        type: text
+        comment: 'Должно быть уникальным и громким'
+    slug:
+        label: 'Уникальное название проекта (Поле заполняется автоматически)'
+        span: right
+        placeholder: zhk_metropolija
+        preset:
+            field: name
+            type: slug
+        type: text
+        comment: 'Можно менять при необходимости'
+    description:
+        label: 'Описание проекта'
+        size: tiny
+        span: full
+        type: textarea
+        comment: 'Описание проекта (65 тысяч символов)'
+    is_active:
+        label: Активно
+        span: left
+        default: 1
+        type: switch
+        comment: 'По умолчанию активно'
+    schema_image:
+        label: 'Схема расстановки мебели'
+        mode: file
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: auto
+        type: fileupload
+    is_favorite:
+        label: 'Показывать на главной'
+        span: auto
+        type: switch
+        comment: 'Показывать ли проект на главной странице'
+    images:
+        label: Фотографии
+        mode: image
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: auto
+        type: fileupload
+        comment: 'Первая фотография является главной'

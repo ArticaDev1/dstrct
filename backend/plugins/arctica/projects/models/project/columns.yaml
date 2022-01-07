@@ -1,0 +1,30 @@
+columns:
+    id:
+        label: id
+        type: number
+        searchable: true
+        invisible: true
+        sortable: true
+    name:
+        label: name
+        type: text
+        searchable: true
+        sortable: true
+    slug:
+        label: slug
+        type: text
+        searchable: true
+        sortable: true
+    is_active:
+        label: is_active
+        type: switch
+    description:
+        label: description
+        type: text
+        invisible: true
+    created_at:
+        label: created_at
+        type: datetime
+    updated_at:
+        label: updated_at
+        type: datetime

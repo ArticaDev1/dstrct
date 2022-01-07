@@ -1,0 +1,8 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table arctica_zayavki_application'
+    - builder_table_create_arctica_zayavki_application.php
+1.0.3:
+    - 'Updated table arctica_zayavki_application'
+    - builder_table_update_arctica_zayavki_application.php
