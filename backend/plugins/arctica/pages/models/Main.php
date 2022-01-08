@@ -1,5 +1,6 @@
 <?php namespace Arctica\Pages\Models;
 
+use Arctica\Projects\Models\Project;
 use October\Rain\Database\Attach\File;
 use October\Rain\Database\Model;
 use October\Rain\Exception\ValidationException;
@@ -29,9 +30,19 @@ class Main extends Model
     public $rules = [
     ];
 
+    public $jsonable = ['images'];
+
     public $attachMany = [
-        'images' => 'System\Models\File',
+        'main_page_project_image' => 'System\Models\File',
     ];
+
+     /**
+      * @return mixed
+      */
+    public function getProjectIdOptions()
+    {
+        return Project::lists('name', 'slug');
+    }
 
     /**
      * @return array
@@ -40,14 +51,34 @@ class Main extends Model
     {
         return [
             'about' => $this->about,
-            'images' => $this->images->map(
-                function (File $file): array {
-                    return [
-                        'description' => $file->description,
-                        'path' => $file->getPath(),
-                    ];
-                }
-            )->toArray(),
+            'projects' => $this->getProjects(),
         ];
+    }
+
+    public function getProjects(): array
+    {
+        $activeImages = [];
+
+        foreach ($this->images as $image) {
+            if ($image['is_active'] === '1') {
+                $activeImages[] = $image;
+            }
+        }
+
+        foreach (array_slice($activeImages, 0, 7) as $image) {
+            $project = Project::where('slug', $image['project_id'])->get()->first();
+
+            $projectImage = empty($image['main_page_project_image']) ?
+                $project->getFirstImage()->getPath() :
+                sprintf('%s%s', 'https://dstrct-bureau.com/backend/storage/app/media', $image['main_page_project_image']);
+
+            $result[] = [
+                'project_slug' => $image['project_id'],
+                'image' => $projectImage,
+                'description' => $image['project_photo_description']
+            ];
+        }
+
+        return $result ?? [];
     }
 }
