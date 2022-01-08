@@ -6,13 +6,34 @@ fields:
         type: textarea
         comment: 'Заголовок на главной'
     images:
-        label: Фотографии
-        mode: image
-        useCaption: true
-        thumbOptions:
-            mode: crop
-            extension: auto
-        maxFiles: '7'
+        label: 'Фотографии проектов'
+        prompt: 'Добавить фотографию'
+        maxItems: '7'
+        style: accordion
         span: full
-        type: fileupload
-        comment: 'Не более 7 шт'
+        type: repeater
+        comment: 'не более 7 шт'
+        form:
+            fields:
+                project_id:
+                    label: Проект
+                    showSearch: true
+                    span: auto
+                    type: dropdown
+                    comment: 'Название проекта'
+                main_page_project_image:
+                    label: 'Фото для главной'
+                    mode: image
+                    span: auto
+                    type: mediafinder
+                    comment: 'Если не загрузить, то будет использоваться главная фотография прокта'
+                project_photo_description:
+                    label: 'Описание под фото'
+                    span: auto
+                    placeholder: 'Фрагмент обеденной зоны из проекта ЖК Резиденции Архитекторов'
+                    type: text
+                is_active:
+                    label: Активно
+                    span: auto
+                    default: 1
+                    type: switch

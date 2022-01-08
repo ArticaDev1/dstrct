@@ -3,12 +3,14 @@ fields:
         label: 'Название проекта'
         span: left
         placeholder: 'ЖК Метрополия'
+        required: 1
         type: text
         comment: 'Должно быть уникальным и громким'
     slug:
         label: 'Уникальное название проекта (Поле заполняется автоматически)'
         span: right
         placeholder: zhk_metropolija
+        required: 1
         preset:
             field: name
             type: slug
@@ -36,17 +38,54 @@ fields:
         span: auto
         type: fileupload
     is_favorite:
-        label: 'Показывать на главной'
+        label: 'Слайдер на главной'
         span: auto
         type: switch
         comment: 'Показывать ли проект на главной странице'
-    images:
-        label: Фотографии
-        mode: image
-        useCaption: true
-        thumbOptions:
-            mode: crop
-            extension: auto
-        span: auto
-        type: fileupload
-        comment: 'Первая фотография является главной'
+tabs:
+    fields:
+        project_attributes:
+            label: Атрибуты
+            prompt: 'Добавить новый атрибут'
+            minItems: '7'
+            style: default
+            span: auto
+            type: repeater
+            tab: 'Атрибуты проекта'
+            form:
+                fields:
+                    attribute_id:
+                        label: Артибут
+                        showSearch: true
+                        span: auto
+                        type: dropdown
+                        comment: Атрибут
+                    value:
+                        label: 'Значение атрибута'
+                        span: auto
+                        type: text
+        must_be_important:
+            label: 'Что было важно'
+            prompt: +
+            style: default
+            span: auto
+            type: repeater
+            commentAbove: 'Здесь можно перечислить основные вещи, которые было необходимо реализовать по требованию заказчика'
+            tab: 'Что было важно в проекте'
+            form:
+                fields:
+                    value:
+                        label: 'Напишите здесь'
+                        span: full
+                        type: text
+        images:
+            label: Фотографии
+            mode: image
+            useCaption: true
+            thumbOptions:
+                mode: crop
+                extension: auto
+            span: full
+            type: fileupload
+            comment: 'Первая фотография является главной'
+            tab: Галерея

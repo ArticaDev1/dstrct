@@ -73,7 +73,7 @@ class Main extends Model
                 sprintf('%s%s', 'https://dstrct-bureau.com/backend/storage/app/media', $image['main_page_project_image']);
 
             $result[] = [
-                'project_slug' => $image['project_id'],
+                'slug' => $image['project_id'],
                 'image' => $projectImage,
                 'description' => $image['project_photo_description']
             ];

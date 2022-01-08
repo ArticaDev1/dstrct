@@ -1,0 +1,4 @@
+title: Applications
+modelClass: Arctica\Applications\Models\Application
+toolbar:
+    buttons: reorder_toolbar

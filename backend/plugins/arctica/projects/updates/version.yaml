@@ -18,3 +18,18 @@
 1.0.7:
     - 'Updated table arctica_projects_attributes'
     - builder_table_update_arctica_projects_attributes.php
+1.0.8:
+    - 'Updated table arctica_projects_projects'
+    - builder_table_update_arctica_projects_projects_2.php
+1.0.9:
+    - 'Updated table arctica_projects_projects'
+    - builder_table_update_arctica_projects_projects_3.php
+1.0.10:
+    - 'Updated table arctica_projects_projects'
+    - builder_table_update_arctica_projects_projects_4.php
+1.0.11:
+    - 'Updated table arctica_projects_projects'
+    - builder_table_update_arctica_projects_projects_5.php
+1.0.12:
+    - 'Updated table arctica_projects_projects'
+    - builder_table_update_arctica_projects_projects_6.php

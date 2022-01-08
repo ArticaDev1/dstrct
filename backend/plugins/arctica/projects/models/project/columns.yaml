@@ -6,7 +6,7 @@ columns:
         invisible: true
         sortable: true
     name:
-        label: name
+        label: Название
         type: text
         searchable: true
         sortable: true
@@ -16,15 +16,18 @@ columns:
         searchable: true
         sortable: true
     is_active:
-        label: is_active
+        label: Активно
         type: switch
     description:
         label: description
         type: text
         invisible: true
     created_at:
-        label: created_at
+        label: Создано
         type: datetime
     updated_at:
-        label: updated_at
+        label: Обновлено
         type: datetime
+    is_favorite:
+        label: 'Показывать на главной'
+        type: switch

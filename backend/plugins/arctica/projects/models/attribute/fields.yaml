@@ -3,3 +3,8 @@ fields:
         label: 'Название атрибута'
         span: auto
         type: text
+    is_preview:
+        label: Preview
+        span: auto
+        type: switch
+        comment: 'Заполнять через админстратора'

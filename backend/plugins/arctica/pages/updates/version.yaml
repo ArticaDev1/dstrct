@@ -15,3 +15,6 @@
 1.0.6:
     - 'Created table arctica_pages_monitoring'
     - builder_table_create_arctica_pages_monitoring.php
+1.0.7:
+    - 'Updated table arctica_pages_main'
+    - builder_table_update_arctica_pages_main.php
