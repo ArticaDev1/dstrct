@@ -12,7 +12,7 @@ trait JsonDataResponseTrait
      *
      * @return JsonResponse
      */
-    public static function json(array $data): JsonResponse
+    public static function json(array $data = [], int $statusCode = 200): JsonResponse
     {
         $contacts = Contact::where('is_active', true)->get();
 
@@ -38,6 +38,6 @@ trait JsonDataResponseTrait
             $contactsResult
         );
 
-        return response()->json(array_merge($fields, $data));
+        return response()->json(array_merge($fields, $data))->setStatusCode($statusCode);
     }
 }

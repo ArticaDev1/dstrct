@@ -1,8 +1,8 @@
 <?php namespace Arctica\Projects\Models;
 
-use Model;
 use Arctica\Projects\Models\Attribute;
 use Arctica\Projects\Models\Project;
+use October\Rain\Database\Model;
 
 /**
  * Model

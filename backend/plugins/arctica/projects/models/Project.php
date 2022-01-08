@@ -1,9 +1,9 @@
 <?php namespace Arctica\Projects\Models;
 
+use Arctica\Projects\Models\Attribute;
 use Illuminate\Support\Collection;
 use October\Rain\Database\Attach\File;
 use October\Rain\Database\Model;
-use Arctica\Projects\Models\Attribute;
 
 /**
  * Model
@@ -18,12 +18,12 @@ class Project extends Model
      */
     public $table = 'arctica_projects_projects';
 
+    protected $jsonable = ['project_attributes'];
+
     /**
      * @var array Validation rules
      */
     public $rules = [
-        'name' => 'required',
-        'slug' => 'required',
     ];
 
     public $attachOne = [
@@ -54,6 +54,27 @@ class Project extends Model
     public function getProjectImportants(): Collection
     {
         return ProjectImportant::where('project_id', $this->id)->get();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAttributeIdOptions()
+    {
+        $notChoosingAttributes = Attribute::whereNotIn(
+            'id',
+            $this->getProjectAttributes()->map(
+                function (ProjectAttributes $attributes): int {
+                    return $attributes->getAttributeModel()->id;
+                }
+            )
+        )->get();
+
+        foreach ($notChoosingAttributes as $attribute) {
+            $result[$attribute->id] = $attribute->name;
+        }
+
+        return $result ?? [];
     }
 
     /**
@@ -128,5 +149,42 @@ class Project extends Model
                 }
             )->toArray(),
         ];
+    }
+
+    public function afterCreate()
+    {
+        $existedAttributes = $this->getProjectAttributes();
+
+
+        foreach ($this->project_attributes as $projectAttribute) {
+            $attributeId = $projectAttribute['attribute_id'];
+            $attributeValue = $projectAttribute['value'];
+
+            $existedProjectAttribute = $existedAttributes->filter(
+                function (ProjectAttributes $projectAttribute) use ($attributeId): bool {
+                    return $projectAttribute->getAttributeModel()->id == $attributeId;
+                }
+            )->first();
+
+            $attributeModel = Attribute::where('id', $attributeId)->get()->first();
+
+            if (is_null($existedProjectAttribute)) {
+                $model = new ProjectAttributes();
+
+                $model->value = $attributeValue;
+                $model->setRelation('attribute', $attributeModel);
+                $model->setRelation('project', $this);
+
+                $model->save();
+
+                $this->getProjectAttributes()->add($model);
+            } else {
+                $existedProjectAttribute->value = $attributeValue;
+
+                $existedProjectAttribute->save();
+            }
+        }
+
+        parent::afterCreate();
     }
 }

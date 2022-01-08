@@ -47,7 +47,7 @@ class Contact extends Model
     public function getView(): array
     {
         return [
-            'type' => $this->getType()->name,
+            'type' => $this->getType()->slug,
             'value' => $this->value
         ];
     }
