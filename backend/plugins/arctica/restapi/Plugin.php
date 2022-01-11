@@ -1,7 +1,9 @@
 <?php namespace Arctica\RestApi;
 
 use Backend;
+use Cms\Classes\Page;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Request;
 use October\Rain\Exception\ValidationException;
 use System\Classes\PluginBase;
 
@@ -43,9 +45,12 @@ class Plugin extends PluginBase
     public function boot()
     {
         App::error(function (\Exception $exception) {
-            return response()->json([
-                'message' => $exception->getMessage(),
-            ], 400);
+            NotificationAlertHelper::alert($exception->getMessage());
+            if (strpos(Request::decodedPath(), '/api') !== false || strpos(Request::decodedPath(), 'api/') !== false) {
+                return response()->json([
+                    'message' => $exception->getMessage(),
+                ], 400);
+            }
         });
     }
 

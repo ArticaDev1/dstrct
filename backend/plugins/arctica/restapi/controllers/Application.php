@@ -2,12 +2,16 @@
 
 namespace Arctica\Restapi\Controllers;
 
+use Arctica\RestApi\NotificationAlertHelper;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Input;
 
 class Application extends Controller
 {
+    private static $sendEmails = ['romaartemov1999@gmail.com'];
+    private static $template = 'arctica.dstrct::contact';
+
     /**
      * @return JsonResponse
      *
@@ -43,6 +47,13 @@ class Application extends Controller
 
         $model->save();
 
+        NotificationAlertHelper::application($model->toEmail());
+
+        foreach (self::$sendEmails as $email) {
+            \Mail::send(self::$template, $model->toEmail(), function ($message) use ($email) {
+                $message->to($email);
+            });
+        }
 
         return new JsonResponse();
     }

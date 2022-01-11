@@ -26,4 +26,13 @@ class Application extends Model
      */
     public $rules = [
     ];
+
+    public function toEmail(): array
+    {
+        return  [
+            'name' => $this->name,
+            'phone' => $this->phone,
+            'url' => $this->from,
+        ];
+    }
 }
