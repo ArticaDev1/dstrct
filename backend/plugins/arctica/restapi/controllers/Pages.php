@@ -33,7 +33,7 @@ class Pages extends Controller
             array_merge(
                 $page->getView(),
                 [
-                    'favorite_projects' => $favoriteProjects->map(
+                    'selected_projects' => $favoriteProjects->map(
                         function (Project $project): array {
                             return $project->getPreview();
                         }
