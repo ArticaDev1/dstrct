@@ -5,6 +5,7 @@ use Cms\Classes\Page;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Request;
 use October\Rain\Exception\ValidationException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use System\Classes\PluginBase;
 use System\Classes\MediaLibrary;
 use Illuminate\Support\Facades\Event;
@@ -47,11 +48,13 @@ class Plugin extends PluginBase
     public function boot()
     {
         App::error(function (\Exception $exception) {
+            $code = $exception instanceof NotFoundHttpException ? 404 : 400;
+
             NotificationAlertHelper::alert($exception->getMessage());
             if (strpos(Request::decodedPath(), '/api') !== false || strpos(Request::decodedPath(), 'api/') !== false) {
                 return response()->json([
                     'message' => $exception->getMessage(),
-                ], 400);
+                ], $code);
             }
         });
 

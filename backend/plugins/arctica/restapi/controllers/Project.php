@@ -7,6 +7,7 @@ use Illuminate\Routing\Controller;
 use Arctica\Projects\Models\Project as ProjectModel;
 use Illuminate\Support\Collection;
 use Arctica\RestApi\JsonDataResponseTrait;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Project extends Controller
 {
@@ -26,7 +27,7 @@ class Project extends Controller
         $collection = ProjectModel::where('slug', $projectSlug)->get();
 
         if ($collection->isEmpty()) {
-            throw new \Exception(sprintf('Проект %s не найден', $projectSlug));
+            throw new NotFoundHttpException(sprintf('Проект %s не найден', $projectSlug));
         }
 
         $project = $collection->first();
