@@ -48,13 +48,17 @@ class Plugin extends PluginBase
     public function boot()
     {
         App::error(function (\Exception $exception) {
-            $code = $exception instanceof NotFoundHttpException ? 404 : 400;
+            if ($exception instanceof NotFoundHttpException) {
+                $code = 404;
+
+                return JsonDataResponseTrait::json([], 404);
+            }
 
             NotificationAlertHelper::alert($exception->getMessage());
             if (strpos(Request::decodedPath(), '/api') !== false || strpos(Request::decodedPath(), 'api/') !== false) {
                 return response()->json([
                     'message' => $exception->getMessage(),
-                ], $code);
+                ], 400);
             }
         });
 
