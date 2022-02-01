@@ -89,6 +89,11 @@ class ProjectGallery extends Model
         parent::afterSave();
     }
 
+    public function isActive()
+    {
+        return $this->getImages()->count() > 0 && $this->is_active == true;
+    }
+
     protected function beforeCreate()
     {
         parent::beforeCreate();

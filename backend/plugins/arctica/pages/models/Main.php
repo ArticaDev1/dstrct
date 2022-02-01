@@ -45,6 +45,14 @@ class Main extends Model
     }
 
     /**
+     * @return string
+     */
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+
+    /**
      * @return array
      */
     public function getView(): array

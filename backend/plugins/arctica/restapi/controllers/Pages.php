@@ -44,7 +44,9 @@ class Pages extends Controller
                         }
                     )->toArray(),
                 ]
-            )
+            ),
+            200,
+            $page->getTitle()
         );
     }
 
@@ -58,7 +60,7 @@ class Pages extends Controller
          */
         $page = Equipment::where('id', 1)->get()->first();
 
-        return JsonDataResponseTrait::json($page->getView());
+        return JsonDataResponseTrait::json($page->getView(), 200, $page->getTitle());
     }
 
     /**
@@ -71,6 +73,6 @@ class Pages extends Controller
          */
         $service = Service::where('page_slug', 'monitoring')->get()->first();
 
-        return JsonDataResponseTrait::json($service->getView());
+        return JsonDataResponseTrait::json($service->getView(), 200, $service->name);
     }
 }

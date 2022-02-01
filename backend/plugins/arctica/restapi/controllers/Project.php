@@ -23,6 +23,7 @@ class Project extends Controller
         /**
          * @var Collection $collection
          * @var Collection $seeAlso
+         * @var Collection $otherProjects
          */
         $collection = ProjectModel::where('slug', $projectSlug)->get();
 
@@ -36,7 +37,23 @@ class Project extends Controller
             throw new \Exception(sprintf('Проект %s не найден', $projectSlug));
         }
 
-        $seeAlso = ProjectModel::whereNotIn('slug', [$projectSlug])->get();
+        $otherProjects = ProjectModel::whereNotIn('slug', [$projectSlug])->get();
+
+        $alsoProjects = [];
+
+        foreach ($otherProjects as $otherProject) {
+            if ($otherProject->id > $project->id) {
+                $alsoProjects[] = $otherProject;
+            }
+        }
+
+        foreach ($otherProjects as $otherProject) {
+            if ($otherProject->id < $project->id) {
+                $alsoProjects[] = $otherProject;
+            }
+        }
+
+        $seeAlso = new Collection($alsoProjects);
 
         return JsonDataResponseTrait::json([
             'project' => $project->getView(),
@@ -45,7 +62,7 @@ class Project extends Controller
                     return $project->getPreview();
                 }
             )
-        ]);
+        ], 200, $project->name);
     }
 
     /**

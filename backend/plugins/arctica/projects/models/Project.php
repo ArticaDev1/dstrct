@@ -98,11 +98,7 @@ class Project extends Model
             'description' => $this->description,
             'schema_image' => is_null($this->schema_image) ? null : $this->schema_image->getPath(),
             'main_image' => $this->main_page_image->getPath(),
-            'galleries' => $this->galleies->filter(
-                function (ProjectGallery $gallery): bool {
-                    return $gallery->getImages()->count() > 0;
-                }
-            )->map(
+            'galleries' => $this->getGalleries()->map(
                 function (ProjectGallery $gallery): array {
                     return [
                         'name' => $gallery->getApiName(),
@@ -160,12 +156,20 @@ class Project extends Model
                     }
                 )->toArray()
             ),
-            'preview_images' => $this->getImages()->slice(0,2)->map(
-                function (File $file): string {
-                    return $file->getPath();
-                }
-            )->toArray(),
+            'preview_images' => [
+                $this->main_page_image->getPath(),
+                $this->getGalleries()->first()->getImages()->first()->getPath()
+            ]
         ];
+    }
+
+    public function getGalleries(): Collection
+    {
+        return ProjectGallery::where('project_id', $this->id)->get()->filter(
+            function (ProjectGallery $gallery): bool {
+                return $gallery->isActive();
+            }
+        );
     }
 
     public function afterUpdate()

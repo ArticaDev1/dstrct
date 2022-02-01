@@ -41,6 +41,11 @@ class Equipment extends Model
         return Service::where('page_slug', 'equipment')->get()->first();
     }
 
+    public function getTitle(): string
+    {
+        return $this->getRelatedService()->name;
+    }
+
     /**
      * @return array
      */
