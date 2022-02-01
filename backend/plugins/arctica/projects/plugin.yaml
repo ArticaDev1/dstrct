@@ -14,6 +14,10 @@ navigation:
                 label: Проекты
                 url: arctica/projects/projectcontroller
                 icon: icon-book
+            side-menu-item2:
+                label: 'Галереи проектов'
+                url: arctica/projects/projectgallery
+                icon: icon-image
             side-menu-item3:
                 label: 'Список атрибутов'
                 url: arctica/projects/attributes

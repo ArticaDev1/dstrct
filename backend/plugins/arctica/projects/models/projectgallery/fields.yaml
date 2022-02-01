@@ -1,0 +1,39 @@
+fields:
+    project_id:
+        label: Проект
+        showSearch: true
+        span: auto
+        required: 1
+        type: dropdown
+        comment: 'Выберете проект'
+    gallery_id:
+        label: 'Тип галлереи'
+        showSearch: true
+        span: auto
+        required: 1
+        type: dropdown
+        comment: 'Выберите тип галереи'
+    is_active:
+        label: Активно
+        span: auto
+        default: 1
+        type: switch
+        comment: 'Активно по умолчанию'
+    sort:
+        label: 'Номер сортировки'
+        span: auto
+        required: 1
+        type: number
+        comment: 'Чем больше номер сортировки тем ниже галерея на странице'
+    images:
+        label: Фотографии
+        mode: image
+        imageWidth: '1080'
+        imageHeight: '1920'
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: auto
+        type: fileupload
+        comment: 'Загрузите фотографии'

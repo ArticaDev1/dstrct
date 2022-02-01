@@ -8,11 +8,11 @@ fields:
     images:
         label: 'Фотографии проектов'
         prompt: 'Добавить фотографию'
-        maxItems: '7'
+        maxItems: '6'
         style: accordion
         span: full
         type: repeater
-        comment: 'не более 7 шт'
+        comment: 'не более 6 шт'
         form:
             fields:
                 project_id:

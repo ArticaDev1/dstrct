@@ -38,6 +38,9 @@ class Project extends Model
     public $hasMany = [
         'attributes' => [
             ProjectAttributes::class
+        ],
+        'galleies' => [
+            ProjectGallery::class
         ]
     ];
 
@@ -94,11 +97,28 @@ class Project extends Model
             'name' => $this->name,
             'description' => $this->description,
             'schema_image' => is_null($this->schema_image) ? null : $this->schema_image->getPath(),
-            'images' => $this->getImages()->map(
-                function (File $file): string {
-                    return $file->getPath();
+            'main_image' => $this->main_page_image->getPath(),
+            'galleries' => $this->galleies->filter(
+                function (ProjectGallery $gallery): bool {
+                    return $gallery->getImages()->count() > 0;
                 }
-            )->toArray(),
+            )->map(
+                function (ProjectGallery $gallery): array {
+                    return [
+                        'name' => $gallery->getApiName(),
+                        'images' => $gallery->getImages()->map(
+                            function (File $file): string {
+                                return $file->getPath();
+                            }
+                        ),
+                    ];
+                }
+            ),
+            // 'images' => $this->getImages()->map(
+            //     function (File $file): string {
+            //         return $file->getPath();
+            //     }
+            // )->toArray(),
             'attributes' => $this->getProjectAttributes()->map(
                 function (ProjectAttributes $attribute): array {
                     return $attribute->getShortView();

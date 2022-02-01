@@ -1,0 +1,11 @@
+name: 'Создание галереи проекта'
+modelClass: Arctica\Projects\Models\ProjectGallery
+form: $/arctica/projects/models/projectgallery/fields.yaml
+defaultRedirect: arctica/projects/projectgallery
+create:
+    redirect: 'arctica/projects/projectgallery/update/:id'
+    redirectClose: arctica/projects/projectgallery
+update:
+    redirect: arctica/projects/projectgallery
+    redirectClose: arctica/projects/projectgallery
+preview: {  }

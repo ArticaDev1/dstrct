@@ -12,7 +12,7 @@ trait JsonDataResponseTrait
      *
      * @return JsonResponse
      */
-    public static function json(array $data = [], int $statusCode = 200): JsonResponse
+    public static function json(array $data = [], int $statusCode = 200, string $title = null): JsonResponse
     {
         $contacts = Contact::where('is_active', true)->get();
 
@@ -33,8 +33,15 @@ trait JsonDataResponseTrait
             )->toArray());
         }
 
+        if ($statusCode === 404) {
+            $title = 'Страница не найдена';
+        }
+
         $fields = array_merge(
-            ['date' => (new \DateTimeImmutable())->format(\DateTimeImmutable::ATOM)],
+            [
+                'title' => $title ?? 'dstrct-bureau',
+                'date' => (new \DateTimeImmutable())->format(\DateTimeImmutable::ATOM)
+            ],
             $contactsResult
         );
 

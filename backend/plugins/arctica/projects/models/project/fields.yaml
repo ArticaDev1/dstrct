@@ -83,9 +83,15 @@ tabs:
             mode: image
             useCaption: true
             thumbOptions:
-                mode: crop
+                mode: auto
                 extension: auto
+            maxFilesize: '1'
             span: full
             type: fileupload
             comment: 'Первая фотография является главной'
             tab: Галерея
+        partial1:
+            span: auto
+            path: $/arctica/projects/patitials/_partial.htm
+            type: partial
+            tab: 'Tab 4'

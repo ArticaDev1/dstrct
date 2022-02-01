@@ -1,0 +1,19 @@
+columns:
+    project_id:
+        label: Проект
+        type: number
+        searchable: true
+        relation: project
+        select: name
+    gallery_id:
+        label: Тип
+        type: number
+        searchable: true
+        relation: gallery_template
+        select: view_name
+    is_active:
+        label: Активность
+        type: switch
+    sort:
+        label: Порядок
+        type: number
