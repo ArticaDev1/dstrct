@@ -37,7 +37,7 @@ class Project extends Controller
             throw new \Exception(sprintf('Проект %s не найден', $projectSlug));
         }
 
-        $otherProjects = ProjectModel::whereNotIn('slug', [$projectSlug])->get();
+        $otherProjects = ProjectModel::whereNotIn('slug', [$projectSlug])->orderBy('id', 'asc')->get();
 
         $alsoProjects = [];
 
@@ -81,7 +81,7 @@ class Project extends Controller
             'projects' => $collection->map(
                 function (ProjectModel $project): array {return $project->getPreview();}
             )->toArray()
-        ]);
+        ], 200, 'Портфолио');
 
     }
 }
