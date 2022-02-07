@@ -9,6 +9,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use System\Classes\PluginBase;
 use System\Classes\MediaLibrary;
 use Illuminate\Support\Facades\Event;
+use UnexpectedValueException;
 
 /**
  * RestApi Plugin Information File
@@ -52,6 +53,12 @@ class Plugin extends PluginBase
                 $code = 404;
 
                 return JsonDataResponseTrait::json([], 404);
+            }
+
+            if ($exception instanceof UnexpectedValueException) {
+                return response()->json([
+                    'message' => $exception->getMessage(),
+                ], 400);
             }
 
             NotificationAlertHelper::alert($exception->getMessage());

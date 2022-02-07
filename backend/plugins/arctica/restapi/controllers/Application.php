@@ -27,15 +27,15 @@ class Application extends Controller
         $phone = current($phone);
 
         if (!$phone) {
-            throw new \Exception('Номер телефона должен состоять из 11 цифр');
+            throw new \UnexpectedValueException('Номер телефона должен состоять из 11 цифр');
         }
 
         if (is_null($name)) {
-            throw new \Exception('Поле имени должно быть заполнено');
+            throw new \UnexpectedValueException('Поле имени должно быть заполнено');
         }
 
         if (is_null($from)) {
-            throw new \Exception('Поле страницы должно быть заполнено');
+            throw new \UnexpectedValueException('Поле страницы должно быть заполнено');
         }
 
         $model = new \Arctica\Zayavki\Models\Application();

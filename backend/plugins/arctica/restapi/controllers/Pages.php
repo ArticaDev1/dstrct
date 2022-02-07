@@ -26,7 +26,7 @@ class Pages extends Controller
          * @var Main $page
          */
         $favoriteProjects = Project::where('is_favorite', true)->where('is_active', true)->get();
-        $services = Service::select()->get();
+        $services = Service::select()->orderBy('sort', 'asc')->get();
         $page = Main::where('id', 1)->get()->first();
 
         return JsonDataResponseTrait::json(
