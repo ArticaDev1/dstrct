@@ -3,7 +3,7 @@
 section.section.section-about
   BackgroundFigure.section-about__figure(:name="'1'")
   .container
-    SmallSectionTitle About
+    SmallSectionTitle О нас
   .section-about__content
     .section-about__top(v-if="aboutText")
       .container

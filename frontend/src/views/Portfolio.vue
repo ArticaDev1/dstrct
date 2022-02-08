@@ -2,7 +2,7 @@
 
 section.section.portfolio
   .container
-    SmallSectionTitle All projects
+    SmallSectionTitle Все проекты
 
   ProjectItem.portfolio__item(v-for="(project, index) in projects" :index="index" :projects="projects")
 

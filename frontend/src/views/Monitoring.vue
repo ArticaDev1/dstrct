@@ -6,7 +6,7 @@ HeadingTitle(:text="['Авторский ', 'контроль']")
 
 section.section
   .container
-    SmallSectionTitle About
+    SmallSectionTitle Об услуге
     .row
       .col-xl-10.offset-xl-1
         .mb-20.mb-xl-30.color-base(

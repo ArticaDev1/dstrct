@@ -5,7 +5,7 @@ section.section(v-if="filteredProjects")
   BackgroundFigure.section__figure-2(:name="'3'" v-if="filteredProjects.length > 5")
   BackgroundFigure.section__figure-3(:name="'4'")
   .container
-    SmallSectionTitle.section__title Projects
+    SmallSectionTitle.section__title Проекты
     .row
       //v-for
       .project(
@@ -16,8 +16,8 @@ section.section(v-if="filteredProjects")
             @click="startLeaveAnimation(index)"
             :to="{name: 'project', params: {id: project.slug}}"
             :class="layouts[index].imageGrid"
-            :size="layouts[index].imageSize"
-            :image="project.image")
+            :image="project.image"
+            :style="`--image-size:${layouts[index].imageSize};`")
           .project__title(
             :class="layouts[index].titleGrid")
             p {{project.description}}

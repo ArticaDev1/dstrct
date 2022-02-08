@@ -60,6 +60,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .words {
   position: absolute;
   width: 100%;
@@ -134,10 +135,10 @@ export default {
     &__word {
       --font-size: 124px;
       &:nth-child(3) {
-        left: 47%;
+        left: 46%;
       }
       &:nth-child(4) {
-        left: 47%;
+        left: 46%;
         top: 35%;
       }
     }
@@ -153,9 +154,10 @@ export default {
     }
   }
   @include media-breakpoint-down(sm) {
-    --height: calc(var(--content-width) * 0.68);
+    --height: calc(var(--window-width) * 0.71);
+    padding: 0;
     &__word {
-      --font-size: calc(var(--content-width) * 0.18);
+      --font-size: calc(var(--window-width) * 0.20);
       &:nth-child(4) {
         top: calc(46% - 0.36em);
       }

@@ -2,7 +2,7 @@
   
 section.section.section-services.color-accent-1
   .container
-    SmallSectionTitle Services
+    SmallSectionTitle Услуги
 
   .section-services__content
 

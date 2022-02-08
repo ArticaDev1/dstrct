@@ -5,7 +5,7 @@ HeadingTitle(:text="['Комплектация']")
 
 section.section
   .container
-    SmallSectionTitle About
+    SmallSectionTitle Об услуге
     .row
       .col-xl-10.offset-xl-1
         .color-base(
@@ -96,7 +96,7 @@ section.section
 
 section.section.gallery(v-if="images")
   .container
-    SmallSectionTitle Gallery
+    SmallSectionTitle Галерея
     GallerySlider(:images="images")
 
 FormSection

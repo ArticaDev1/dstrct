@@ -1,7 +1,7 @@
 <template lang="pug">
 .projects
 
-  SmallSectionTitle.projects__title Selected projects
+  SmallSectionTitle.projects__title Лучшие проекты
 
   .projects__slider
     Swiper(
@@ -19,8 +19,7 @@
       SwiperSlide.project(v-for="project in projects")
         .project__content
           ProjectLinkImage.project__image(
-            :to="{name: 'project', params: {id: project.slug}}"
-            :size="'64%'")
+            :to="{name: 'project', params: {id: project.slug}}")
             img(:data-src="project.image" alt="alt").lazyload.lazypreload
           .project__shadow.image
             img.lazyload.lazypreload(
@@ -117,8 +116,11 @@ export default {
     }
   }
   @include media-breakpoint-down(sm) {
-    --gap: calc(var(--content-width) * 0.2);
-    --size: calc(var(--content-width) * 0.75);
+    --gap: calc(var(--window-width) * 0.14);
+    --size: calc(var(--window-width) * 0.76);
+    &__slider {
+      margin: 0 calc(var(--container-padding-x) * -1);
+    }
   }
 }
 
@@ -129,6 +131,7 @@ export default {
   &__image {
     z-index: 2;
     --overlay: 0.2;
+    --image-size: 64%;
   }
   &__shadow {
     pointer-events: none;
@@ -139,6 +142,11 @@ export default {
     left: -38%;
     img {
       height: 100%;
+    }
+  }
+  @include media-breakpoint-down(sm) {
+    &__image {
+      --image-size: 77%;
     }
   }
 }

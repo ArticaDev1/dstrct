@@ -37,7 +37,7 @@ section.section.project-plan(v-if="planImage")
           img.lazyload(:src="planImage" alt="image" @load="this.$aos.refresh()")
 
 section.section(v-if="galleries && galleries.length")
-  section.section.gallery(v-for="gallery in galleries")
+  .gallery(v-for="gallery in galleries")
     Gallery(:type="gallery.name" :images="gallery.images")
 
 section.section(v-if="elseProjects && elseProjects.length")
@@ -47,8 +47,8 @@ section.section(v-if="elseProjects && elseProjects.length")
       .col-6.col-md-3(v-for="project in elseProjects")
         ProjectLinkImage(
           :to="{name: 'project', params: {id: project.slug}}"
-          :size="'137%'"
-          :image="project.preview_images[0]")
+          :image="project.preview_images[0]"
+          style="--image-size: 136%;")
         .mt-10.mt-xl-20.color-accent-1 {{ project.name }}
         
 FormSection
@@ -160,7 +160,9 @@ export default {
   }
 
   .gallery {
-    margin-bottom: var(--section-small-margin);
+    &:not(:last-child) {
+      margin-bottom: var(--section-small-margin);
+    }
   }
   .project-head {
     &__figure {

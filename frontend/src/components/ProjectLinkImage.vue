@@ -1,6 +1,5 @@
 <template lang="pug">
 router-link.project-link.image-content.image.image_cover(
-  :style="`--image-size:${size};`"
   data-cursor='watchProject')
   img.lazyload(
     v-if="image"
@@ -12,10 +11,6 @@ router-link.project-link.image-content.image.image_cover(
 <script>
 export default {
   props: {
-    size: {
-      type: String,
-      default: '100%'
-    },
     image: {
       type: String
     }

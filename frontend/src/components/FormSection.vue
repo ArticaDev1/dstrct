@@ -4,7 +4,7 @@ section.section.form-section
     v-if="figure"
     :name="'14'")
   .container
-    SmallSectionTitle Form
+    SmallSectionTitle Обратная связь
     .form-section__head.row
       .col-md-10.offset-md-1.col-xl-12.offset-xl-0
         h2 Хотите реализовать свой проект с нами?

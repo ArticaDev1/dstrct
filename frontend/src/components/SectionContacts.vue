@@ -2,7 +2,7 @@
 
 section.section.contacts-section(v-if="contacts")
   .container
-    SmallSectionTitle Contacts
+    SmallSectionTitle Контакты
     .row
       .col-10.offset-1.col-xl-12.offset-xl-0
         ContactsList.h2

@@ -1,9 +1,9 @@
 <template lang="pug">
 .projects(
   :class="{active: active}")
-  h2.projects__title Selected projects
+  h2.projects__title Лучшие проекты
   .projects__wrapper(ref="wrapper")
-    SmallSectionTitle.projects__small-title Selected projects 
+    SmallSectionTitle.projects__small-title Лучшие проекты
       span.projects__small-title-line
     .projects__container
       .projects__content
@@ -19,7 +19,6 @@
             ProjectLinkImage.project__image-front(
               @click="startLeaveAnimation(index)"
               :to="{name: 'project', params: {id: project.slug}}"
-              :size="'64%'"
               :image="project.image")
             .project__shadow.image
               img.lazyload(
@@ -336,6 +335,7 @@ export default {
     will-change: transform;
   }
   &__image-front {
+    --image-size: 64%;
     --overlay: 0.2;
     z-index: 2;
   }

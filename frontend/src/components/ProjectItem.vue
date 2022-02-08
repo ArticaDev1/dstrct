@@ -14,7 +14,6 @@ section.section.project-item(:class="`project-item_${index}`")
           ref="image"
           @click="startLeaveAnimation"
           :to="{name: 'project', params: {id: slug}}"
-          :size="'70%'"
           :image="image")
           
       .col-md-2.offset-md-1.col-xl-1.d-none.d-md-block(
@@ -182,6 +181,7 @@ export default {
   }
   &__image {
     --overlay: 0.4;
+    --image-size: 70%;
     &.clear {
       --overlay: 0;
       --overlay-hover: 0;
