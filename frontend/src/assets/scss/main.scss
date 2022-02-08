@@ -1,8 +1,8 @@
 //fonts
-@import "./components/fonts";
+@import "./partails/fonts";
 
 //css variables
-@import "./components/css-variables";
+@import "./partails/css-variables";
 
 //normalize
 @import "~@/../node_modules/normalize.css/normalize";
@@ -13,7 +13,7 @@
 @import "~@/../node_modules/bootstrap/scss/utilities/api";
 
 //else
-@import "./components/basic";
-@import "./components/layout";
-@import "./components/typography";
-@import "./components/helpers";
+@import "./partails/basic";
+@import "./partails/layout";
+@import "./partails/typography";
+@import "./partails/helpers";

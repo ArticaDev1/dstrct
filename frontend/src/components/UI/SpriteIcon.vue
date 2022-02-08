@@ -1,8 +1,6 @@
 <template lang="pug">
-  
 svg.icon
-  use(:xlink:href="require('@/assets/img/icons/icons.svg') + id")
-
+  use(:xlink:href="`${require('@/assets/img/icons/icons.svg')}#${id}`")
 </template>
 
 <script>

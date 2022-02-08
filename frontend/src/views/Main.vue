@@ -1,41 +1,35 @@
 <template lang="pug">
-
 SectionHome
-About
-Service
-Projects(v-if="projects" :projects="projects")
-Contacts(v-if="contacts" :contacts="contacts")
-
+SectionAbout
+SectionService
+SectionProjectsPreview
+FormSection(:figure="false")
+SectionContacts
 </template>
 
 <script>
-  import SectionHome from "@/components/SectionHome";
-  import About from "@/components/sections/About";
-  import Service from "@/components/SectionService";
-  import Projects from "@/components/sections/Projects";
-  import Contacts from "@/components/sections/Contacts";
+import ViewAnimationEvents from "@/mixins/ViewAnimationEvents";
 
-  import { mapGetters, mapState } from "vuex";
+import SectionHome from "@/components/SectionHome";
+import SectionAbout from "@/components/SectionAbout";
+import SectionService from "@/components/SectionService";
+import SectionProjectsPreview from "@/components/SectionProjectsPreview";
+import SectionContacts from "@/components/SectionContacts";
+import FormSection from "@/components/FormSection";
 
-  export default {
-    components: {
-      SectionHome,
-      Projects,
-      Contacts, 
-      About,
-      Service
-    },
-    computed: {
-      ...mapGetters({
-        contacts: 'getContacts'
-      }),
-      ...mapState({
-        projects: state => state.routeData.projects
-      })
-    }
+export default {
+  mixins: [ViewAnimationEvents],
+  components: {
+    SectionHome,
+    SectionAbout,
+    SectionService,
+    SectionProjectsPreview,
+    SectionContacts,
+    FormSection
   }
+}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 </style>

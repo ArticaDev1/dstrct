@@ -1,12 +1,11 @@
 <template lang="pug">
-  
-a.link-icon
+component.link-icon(:is="tag")
   .link-icon__text
     span
       slot
   SpriteIcon(
-    v-if="icon !== false" 
-    :id="icon")
+    v-if="icon"
+    :id="'caret-right'")
 
 </template>
 
@@ -14,11 +13,13 @@ a.link-icon
 export default {
   name: 'LinkIcon',
   props: {
+    tag: {
+      type: String,
+      default: 'a'
+    },
     icon: {
-      type: [Boolean, String],
-      default() {
-        return '#caret-right';
-      }
+      type: Boolean,
+      default: true
     }
   }
 }
@@ -26,11 +27,13 @@ export default {
 
 <style lang="scss">
   .link-icon {
-    color: var(--color-base);
+    transition: color var(--trs-1);
+    color: var(--color-accent-1);
     text-decoration: none;
     display: inline-flex;
     align-items: center;
-    gap: 24px;
+    text-align: left;
+    gap: 25px;
     line-height: var(--large-line-height);
     &__text {
       span {
@@ -38,11 +41,15 @@ export default {
       }
     }
     .icon {
-      width: 16px;
+      width: 9px;
       height: 16px;
+      transition: transform var(--trs-1)
     }
     &[data-touch], &[data-hover] {
-      color: var(--color-accent);
+      color: var(--color-accent-2);
+      .icon {
+        transform: translateX(5px);
+      }
     }
   }
 </style>

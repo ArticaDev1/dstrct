@@ -1,0 +1,177 @@
+html, body {
+  height: 100%;
+  width: var(--page-width);
+  padding: 0 !important;
+}
+
+html {
+  touch-action: manipulation;
+}
+
+body {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  background-color: var(--color-base-background);
+}
+
+#app {
+  display: flex;
+  position: relative;
+  @supports(mix-blend-mode: multiply) {
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("~@/assets/img/noize.gif");
+      background-size: 200px;
+      background-position: center center;
+      background-repeat: repeat;
+      opacity: 0.75;
+      mix-blend-mode: multiply;
+    }
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-color: var(--color-base-background);
+      transition: opacity var(--trs-3);
+    }
+    &.ready {
+      &::after {
+        opacity: 0;
+      }
+    }
+  }
+}
+
+.wrapper {
+  width: 100%;
+  position: relative;
+  z-index: 3;
+  &.disabled {
+    pointer-events: none !important;
+    * {
+      pointer-events: none !important; 
+    }
+  }
+}
+
+.content {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: stretch;
+  overflow: hidden;
+  min-height: var(--window-safe-height);
+  position: relative;
+}
+
+footer, header {
+  flex: 0 0 auto;
+}
+
+footer {
+  position: relative;
+}
+
+main {
+  flex: 1 1 auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+section {
+  margin-bottom: var(--section-margin);
+  position: relative;
+  &:first-child {
+    margin-top: var(--section-margin-first-top);
+  }
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+}
+
+picture {
+  display: block;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  user-select: none;
+  &.lazyload, &.lazyloading {
+    opacity: 0;
+    visibility: hidden;
+  }
+  &.lazyloaded {
+    opacity: 1;
+    visibility: visible;
+    transition-duration: var(--animation-duration-4);
+    transition-timing-function: var(--transition-timing-function-1);
+    transition-property: opacity, visibility;
+  }
+}
+
+.image {
+  display: block;
+  position: relative;
+  img {
+    width: 100%;
+    height: auto;
+  }
+  &_contain, &_cover {
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+    }
+  }
+  &_cover {
+    overflow: hidden;
+    img {
+      object-fit: cover;
+    }
+  }
+  &_contain {
+    img {
+      object-fit: contain;
+    }
+  }
+}
+
+.image-content {
+  background: var(--color-content-image-bg);
+  --image-size: 100%;
+  --overlay: 0;
+  --overlay-hover: var(--overlay);
+  will-change: transform;
+  &::after {
+    content: '';
+    position: relative;
+    z-index: 2;
+    display: block;
+    padding-top: var(--image-size);
+    pointer-events: none;
+    background: #000;
+    opacity: var(--overlay);
+    transition-property: opacity;
+    transition-duration: var(--animation-duration-2);
+    transition-timing-function: ease-in-out;
+  }
+  &[data-touch], &[data-hover] {
+    &::after {
+      opacity: var(--overlay-hover);
+    }
+  }
+}

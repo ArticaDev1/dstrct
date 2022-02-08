@@ -2,14 +2,12 @@
 
 .service-element-head 
   .container
-    .row.align-items-center
-      h2.mb-0.mt-0.col-10 {{title}}
+    .row.align-items-center.service-element-head__row
+      .col-auto.col-xl-2.order-sm-2
+        SpriteIcon.icon_plus(v-if="icon=='plus'" :id="icon")
+        SpriteIcon.icon_link(v-if="icon=='link'" :id="icon")
+      h2.mb-0.mt-0.col.col-xl-10 {{title}}
 
-      .col-2
-        SpriteIcon.icon_plus(v-if="icon=='plus'" :id="'#' + icon")
-        SpriteIcon.icon_link(v-if="icon=='link'" :id="'#' + icon")
-
-      
 </template>
 
 <script>
@@ -27,17 +25,41 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .service-element-head {
-    color: var(--color-accent);
     width: 100%;
-    padding: 35px 0;
+    padding: 34px 0;
     .icon {
-      width: var(--icon-size);
+      color: var(--color-accent-1);
+      width: 36px;
       height: var(--icon-size);
-      transform: var(--hover-transform);
+      transform: var(--transform);
       transition: transform var(--trs-1);
       will-change: transform;
+      &_plus {
+        --icon-size: 36px;
+      }
+      &_link {
+        --icon-size: 30px;
+      }
+    }
+    @include media-breakpoint-down(lg) {
+      .icon {
+        &_plus {
+          --icon-size: 24px;
+        }
+        &_link {
+          --icon-size: 20px;
+        }
+      }
+    }
+    @include media-breakpoint-down(sm) {
+      &__row {
+        --bs-gutter-x: var(--container-padding-x);
+      }
+      .icon {
+        width: var(--icon-size);
+      }
     }
   }
 </style>

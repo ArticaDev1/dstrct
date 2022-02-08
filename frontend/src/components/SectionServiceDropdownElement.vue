@@ -3,6 +3,7 @@
 .service-dropdown-element(
   @click="toggle"
   :class="{active: element.state}"
+  :id="element.id.slice(1)"
   data-custom-interaction)
 
   SectionServiceElementHead(:title="element.title" :icon="'plus'")
@@ -15,7 +16,8 @@
 
 <script>
 import SectionServiceElementHead from "@/components/SectionServiceElementHead";
-import msDuration from "@/assets/js/msDuration";
+import gsap from "@/assets/js/gsap.js";
+import { sDur } from "@/assets/js/animation-duration";
 
 export default {
   components: {
@@ -27,39 +29,52 @@ export default {
       required: true
     }
   },
-  methods: {
-    toggle() {
-      this.$emit('toggle', this.element.id);
+  computed: {
+    state() {
+      return this.element.state;
+    }
+  },
+  watch: {
+    state(value) {
+      if (value) {
+        this.animation.play();
+      } else {
+        this.animation.reverse();
+      }
     }
   },
   mounted() {
-    this.animation = this.$gsap.timeline({paused: true})
-      .slide(this.$refs.content, {duration: msDuration[2] / 1000})
-      .fromTo(this.$refs.content, {autoAlpha: 0}, {autoAlpha: 1, duration: msDuration[2] / 1000}, '<')
+    this.animation = gsap.timeline({paused: true})
+      .slide(this.$refs.content, 
+        { duration: sDur[2] })
+      .fromTo(this.$refs.content, 
+        { autoAlpha: 0 }, 
+        { autoAlpha: 1, duration: sDur[2] }, '<')
 
     this.animation.progress(this.element.state ? 1 : 0);
-
-    this.$watch(
-      () => this.element.state, (newValue) => {
-        if (newValue) {
-          this.animation.play();
-        } else {
-          this.animation.reverse();
-        }
+  },
+  unmounted() {
+    this.animation.kill();
+  },
+  methods: {
+    toggle() {
+      if (this.element.state) {
+        this.$router.push({ name: this.$route.name });
+      } else {
+        this.$router.push({ hash: this.element.id });
       }
-    )
-  } 
+    }
+  }
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .service-dropdown-element {
-    --icon-size: 36px;
     &[data-touch], &[data-hover] {
-      --hover-transform: rotate(15deg);
+      --transform: rotate(15deg);
     }
     &.active {
-      --hover-transform: rotate(45deg);
+      --transform: rotate(45deg);
     }
     &__content {
       height: 0;
@@ -70,6 +85,11 @@ export default {
     }
     &__content-container {
       padding-bottom: 80px;
+    }
+    @include media-breakpoint-down(xl) {
+      &__content-container {
+        padding-bottom: 45px;
+      }
     }
   }
 </style>

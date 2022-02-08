@@ -1,6 +1,6 @@
 <template lang="pug">
 
-.color-muted-4.mb-45
+h2.title.color-muted-3.mb-45
   slot
 
 </template>
@@ -11,6 +11,9 @@ export default {
 }
 </script>
 
-<style lang="scss">
-
+<style lang="scss" scoped>
+.title {
+  font-size: var(--base-font-size);
+  line-height: var(--base-line-height);
+}
 </style>

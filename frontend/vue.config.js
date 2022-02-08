@@ -1,19 +1,13 @@
 module.exports = {
   assetsDir: 'assets',
-  /* devServer: {
-    proxy: {
-      '^/api': {
-        target: 'host',
-        ws: true,
-        changeOrigin: true
-      }
-    }
-  }, */
+  devServer: {
+    proxy: 'https://dstrct-bureau.com'
+  },
   css: {
     loaderOptions: {
       sass: {
         prependData: `
-          @import "@/assets/scss/components/_variables.scss";
+          @import "@/assets/scss/global.scss";
         `
       }
     }

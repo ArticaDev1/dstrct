@@ -1,0 +1,15 @@
+.swiper-wrapper {
+  transition-timing-function: ease;
+}
+
+.swiper-lazy {
+  opacity: 0;
+  visibility: hidden;
+  &-loaded {
+    opacity: 1;
+    visibility: visible;
+    transition-duration: var(--animation-duration-4);
+    transition-timing-function: var(--transition-timing-function-1);
+    transition-property: opacity, visibility;
+  }
+}

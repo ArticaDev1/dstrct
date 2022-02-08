@@ -1,39 +1,25 @@
 import { createStore } from 'vuex';
-import axios from 'axios';
+//modules
+import routeModule from '@/store/modules/route';
+import navigationModule from '@/store/modules/navigation';
+import transitionModule from '@/store/modules/transition';
 
 export default createStore({
-  state: {
-    routeData: {}
+  modules: {
+    route: routeModule,
+    navigation: navigationModule,
+    transition: transitionModule
   },
-  getters: {
-    getContacts(state) {
-      if (!state.routeData.contacts) return;
-      return state.routeData.contacts.map(obj => {
-        if (obj.type == 'phone') {
-          obj.href = `tel:${obj.value.replace(/[^0-9]/g, '')}`;
-        } else if (obj.type == 'email') {
-          obj.href = `mailto:${obj.value}`;
-        }
-        return obj;
-      })
-    }
+  state: {
+    appReady: false,
+    loader: false
   },
   mutations: {
-    SET_ROUTE_DATA(state, payload) {
-      state.routeData = payload;
-    }
-  },
-  actions: {
-    async loadRouteData({ commit }, routePath) {
-      const requestURL = `/api${routePath}`;
-      try {
-        const response = await axios.get(requestURL);
-        commit('SET_ROUTE_DATA', response.data);
-        return true;
-      } catch(error) {
-        console.log(error);
-        return false;
-      }
+    APP_READY(state, payload) {
+      state.appReady = payload;
+    },
+    LOADER(state, payload) {
+      state.loader = payload;
     }
   }
 })

@@ -1,12 +1,12 @@
 <template lang="pug">
 
 footer.footer
+  BackgroundFigure.footer__figure(:name="'5'")
+
   .container.footer__container
     .footer__content
       .footer__title DSTRCT ———— interior
-      .footer__date //{{this.date.start}}
-        template(v-if="this.date.start !== this.date.end")  — {{this.date.end}}
-
+      .footer__date //{{ yearStart }} — {{ yearNow }}
 
     .footer__dev
       | Разработка сайта — 
@@ -22,25 +22,37 @@ footer.footer
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
-  data() {
-    return {
-      date: {
-        start: 2021,
-        end: new Date().getFullYear()
-      }
+  setup() {
+    const yearStart = 2021;
+    return { yearStart };
+  },
+  computed: {
+    ...mapState({
+      date: state => state.route.data.date
+    }),
+    yearNow() {
+      return new Date(this.date).getFullYear();
     }
   }
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .footer {
     position: relative;
-    color: var(--color-muted-4);
+    color: var(--color-muted-3);
     padding: 0 0 50px 0;
+    &__figure {
+      width: 70%;
+      right: 0;
+      bottom: 0;
+    }
     &__container {
       display: flex;
+      gap: 20px;
       justify-content: space-between;
       align-items: center;
     }
@@ -56,7 +68,7 @@ export default {
       gap: 0 6px;
       a {
         transform: translateY(-0.1em);
-        color: var(--color-base);
+        color: var(--color-accent-1);
         svg {
           display: block;
           width: 5em;
@@ -64,6 +76,27 @@ export default {
         &[data-touch], &[data-hover] {
           color: #fff;
         }
+      }
+    }
+    @include media-breakpoint-down(lg) {
+      padding-bottom: 45px;
+      &__figure {
+        width: 100%;
+      }
+    }
+    @include media-breakpoint-down(md) {
+      &__container {
+        flex-direction: column;
+      }
+    }
+    @include media-breakpoint-down(sm) {
+      padding-bottom: 35px;
+      &__content {
+        flex-wrap: wrap;
+        gap: 15px 40px;
+      }
+      &__figure {
+        width: 130%;
       }
     }
   }

@@ -1,142 +1,170 @@
 <template lang="pug">
-
 section.section.home(ref="parent")
   .container.home__container
-    .home__slogan.row
-      .col-xl-3.offset-xl-7
+    .home__slogan.row(:class="{'hidden': sloganHidden}")
+      .col-lg-3.offset-lg-7.home__slogan-inner
         p Cовременный дизайн жилых пространств премиум сегмента
+
+    SelectedProjects.home__projects(
+      :active="activeSelectedProjects"
+      @activation="activeSelectedProjects = true"
+      @disactivation="activeSelectedProjects = false")
 
     .home__links
       LinkIcon(
-        :href="$router.resolve({name: 'projects'}).fullPath"
-        @click.prevent="$router.push({name: 'projects'})") Посмотреть<br> портфолио
+        :href="$router.resolve({name: 'portfolio'}).fullPath"
+        @click.prevent="$router.push({name: 'portfolio'})") Посмотреть<br> портфолио
 
-  .home-words
-    .home-words__container
-      .home-words__word d
-      .home-words__word s
-      .home-words__word t
-      .home-words__word r
-      .home-words__word c
-      .home-words__word t
-      .home-words__word .
+      LinkIcon.home__form-trigger(
+        :tag="'button'"
+        :icon="false"
+        @click="modalFormVisible = true"
+        type="button") Оставить<br> заявку
 
+  SectionHomeWords(
+    :activeSelectedProjects="activeSelectedProjects")
 
+  Teleport(to="#app")
+    ModalForm(
+      :visible="modalFormVisible"
+      @submitted="modalFormVisible = false; modalSuccessVisible = true;"
+      @close="modalFormVisible = false")
+
+  Teleport(to="#app")
+    ModalSuccess(
+      :visible="modalSuccessVisible"
+      @close="modalSuccessVisible = false")
 </template>
 
 <script>
-import msDuration from "@/assets/js/msDuration";
+import { mapState } from 'vuex';
+
+import SelectedProjects from '@/components/SelectedProjects';
+import SectionHomeWords from '@/components/SectionHomeWords';
+import ModalForm from "@/components/ModalForm";
+import ModalSuccess from "@/components/ModalSuccess";
 
 export default {
-  methods: {
-
-    createWordsAnimation() {
-      const $words = this.$el.querySelectorAll('.home-words__word');
-      const dur = msDuration[3] / 1000;
-
-      return this.$gsap.timeline({paused: true})
-        .fromTo($words, {autoAlpha: 0}, {autoAlpha: 1, duration: dur, stagger: {amount: dur / 2, from: 'random'}})
-    }
-
+  components: {
+    SelectedProjects,
+    SectionHomeWords,
+    ModalForm,
+    ModalSuccess
   },
-  mounted() {
-    this.wordsAnimation = this.createWordsAnimation();
-    this.wordsAnimation.play();
+  data() {
+    return {
+      activeSelectedProjects: false,
+      modalFormVisible: false,
+      modalSuccessVisible: false
+    }
+  },
+  computed: {
+    ...mapState({
+      navActive: state => state.navigation.active
+    }),
+    sloganHidden() {
+      return this.navActive && window.innerWidth < this.$breakpoints.sm;
+    }
   }
 }
 </script>
 
-<style lang="scss">
-  .home {
-    --padding-bottom: 80px;
-    min-height: calc(min(var(--screen-max-height), var(--window-safe-height)));
-    margin-bottom: calc(var(--section-margin) - var(--padding-bottom));
-    position: relative;
+<style lang="scss" scoped>
+.home {
+  --padding-bottom: 85px;
+  margin-top: 0;
+  min-height: calc(min(var(--screen-max-height), var(--window-safe-height)));
+  margin-bottom: calc(var(--section-margin) - var(--padding-bottom));
+  position: relative;
+  display: flex;
+  &__container {
     display: flex;
-    &__container {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding-bottom: var(--padding-bottom);
-      padding-top: var(--header-top-padding);
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: var(--padding-bottom);
+    padding-top: var(--header-top-padding);
+  }
+  &__slogan {
+    color: var(--color-accent-1);
+    flex: 0 0 auto;
+    transition: opacity var(--trs-2), visibility var(--trs-2);
+    &.hidden {
+      opacity: 0;
+      visibility: hidden;
     }
+  }
+  &__links {
+    flex: 0 0 auto;
+    display: flex;
+    gap: 110px;
+  }
+  &__projects {
+    flex: 1 1 auto;
+  }
+  @include media-breakpoint-up(xl) {
+    &__slogan {
+      p {
+        max-width: 220px;
+      }
+    }
+  }
+  @include media-breakpoint-up(xxl) {
     &__slogan {
       p {
         max-width: 270px;
       }
     }
-    &__links {
-      
-    }
+  }
+  @include media-breakpoint-down(xxl) {
+    --padding-bottom: 50px;
   }
 
-  .home-words {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    padding: 45px 75px;
-    z-index: 2;
-    pointer-events: none;
+  @include media-breakpoint-down(xl) {
+    &__projects {
+      flex: 0 0 auto;
+    }
+  }
+  @include media-breakpoint-down(lg) {
+    --padding-bottom: 80px;
     &__container {
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      position: relative;
+      padding-top: 120px;
     }
-    &__word {
-      --font-size: 220px;
-      position: absolute;
-      z-index: 2;
-      text-transform: uppercase;
-      font-family: var(--font-family-accent);
-      font-size: var(--font-size);
-      line-height: calc(var(--font-size) * 0.65);
-      padding-top: calc(var(--font-size) * 0.2);
-      color: #fff;
-
-      @supports (background-clip: text) {
-        background-image: url("~@/assets/img/noize.gif");
-        -webkit-text-fill-color: rgba(255, 255, 255, 0.75);
-        -webkit-background-clip: text;
+    &__slogan {
+      &-inner {
+        display: flex;
+        justify-content: flex-end;
       }
-      
-      &:first-child {
-        left: 0;
-        top: 0;
-      }
-      &:nth-child(2) {
-        left: 1em;
-      }
-      &:nth-child(3) {
-        left: 39%;
-      }
-      &:nth-child(4) {
-        left: 39%;
-        top: calc(50% - 0.4em);
-      }
-      &:nth-child(5) {
-        bottom: 0;
-        right: 1.2em;
-      }
-      &:nth-child(6) {
-        bottom: 0;
-        right: 0.3em;
-      }
-      &:nth-child(7) {
-        bottom: 0;
-        right: 0;
-        font-size: calc(var(--font-size) * 0.75);
-        line-height: calc(var(--font-size) * 0.53);
+      p {
+        max-width: 170px;
       }
     }
-    @include media-breakpoint-down(xxl) {
-      padding: 40px;
-      &__word {
-        --font-size: 160px;
+    &__links {
+      gap: 70px;
+    }
+  }
+  @include media-breakpoint-down(md) {
+    --padding-bottom: 45px;
+    &__container {
+      padding-top: var(--header-top-padding);
+    }
+    &__slogan {
+      margin-top: -0.15em;
+      &-inner {
+        display: block;
+      }
+      p {
+        max-width: 200px;
       }
     }
   }
+  @include media-breakpoint-down(sm) {
+    &__links {
+      gap: var(--grid-gutter-width);
+      justify-content: space-between;
+    }
+    &__form-trigger {
+      min-width: 90px;
+    }
+  }
+}
 </style>

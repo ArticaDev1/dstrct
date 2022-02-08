@@ -1,6 +1,6 @@
 <template lang="pug">
 
-router-link.service-link-element(:to="{name: element.routeName}")
+router-link(:to="{name: element.routeName}").service-link-element
   SectionServiceElementHead(:title="element.title" :icon="'link'")
 
 </template>
@@ -24,9 +24,8 @@ export default {
 <style lang="scss">
   .service-link-element {
     text-decoration: none;
-    --icon-size: 30px;
     &[data-touch], &[data-hover] {
-      --hover-transform: rotate(45deg);
+      --transform: rotate(45deg);
     }
   }
 </style>
