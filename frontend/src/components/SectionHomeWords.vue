@@ -154,7 +154,7 @@ export default {
     }
   }
   @include media-breakpoint-down(sm) {
-    --height: calc(var(--window-width) * 0.71);
+    --height: calc(var(--window-width) * 0.74);
     padding: 0;
     &__word {
       --font-size: calc(var(--window-width) * 0.20);

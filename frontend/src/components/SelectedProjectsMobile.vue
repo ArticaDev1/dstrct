@@ -118,6 +118,7 @@ export default {
   @include media-breakpoint-down(sm) {
     --gap: calc(var(--window-width) * 0.14);
     --size: calc(var(--window-width) * 0.76);
+    padding: 80px 0;
     &__slider {
       margin: 0 calc(var(--container-padding-x) * -1);
     }
