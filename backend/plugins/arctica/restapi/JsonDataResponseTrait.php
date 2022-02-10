@@ -37,9 +37,13 @@ trait JsonDataResponseTrait
             $title = 'Страница не найдена';
         }
 
+
+        $agreement = 'https://dstrct-bureau.com/backend/storage/app/media/Privacy/agreement.pdf';
+
         $fields = array_merge(
             [
                 'title' => $title ?? 'dstrct-bureau',
+                'agreement' => $agreement,
                 'date' => (new \DateTimeImmutable())->format(\DateTimeImmutable::ATOM)
             ],
             $contactsResult
