@@ -5,8 +5,10 @@ header.header
     .header__logo(:class="{'visible': logoVisible}")
       Logo
     .header__right
-      .header__socials(:class="{'visible': visible}")
-        SocialsList
+      //- .header__socials(:class="{'visible': visible}")
+      //-   SocialsList
+      a#cssda(href='http://www.cssdesignawards.com/' target='_blank')
+        img(src='https://www.cssdesignawards.com/images/2017/monogram/cssda-nominee-white-vote.png')
       .header__nav-toggle
         TheNavToggle(:background="!visible")
 
@@ -98,5 +100,15 @@ export default {
     }
   }
 }
-
+#cssda {
+  pointer-events: all;
+  width: 74px;
+  display: flex;
+  align-items: center;
+  img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+}
 </style>
