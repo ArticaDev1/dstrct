@@ -102,13 +102,16 @@ export default {
 }
 #cssda {
   pointer-events: all;
-  width: 74px;
+  width: 60px;
+  height: 0;
   display: flex;
   align-items: center;
   img {
     width: 100%;
     max-width: 100%;
     height: auto;
+  }
+  @include media-breakpoint-down(sm) {
   }
 }
 </style>
