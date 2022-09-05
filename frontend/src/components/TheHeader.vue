@@ -7,8 +7,17 @@ header.header
     .header__right
       //- .header__socials(:class="{'visible': visible}")
       //-   SocialsList
-      a#cssda(href='http://www.cssdesignawards.com/' target='_blank')
-        img(src='https://www.cssdesignawards.com/images/2017/monogram/cssda-nominee-white-vote.png')
+      div#cssda(:class="{'visible': navActive}")
+        img.lazyload.lazypreload(
+                :data-src="require('@/assets/img/best-innovation-white.png')" 
+                alt="best-innovation")
+        img.lazyload.lazypreload(
+                :data-src="require('@/assets/img/best-ui-white.png')" 
+                alt="best-ui")
+        img.lazyload.lazypreload(
+                :data-src="require('@/assets/img/best-ux-white.png')" 
+                alt="best-ux")
+        //- img(src='https://www.cssdesignawards.com/images/2017/monogram/cssda-nominee-white-vote.png')
       .header__nav-toggle
         TheNavToggle(:background="!visible")
 
@@ -90,7 +99,7 @@ export default {
   }
   @include media-breakpoint-down(md) {
     &__right {
-      max-width: 140px;
+      // max-width: 140px;
     }
   }
   @include media-breakpoint-down(sm) {
@@ -102,14 +111,33 @@ export default {
 }
 #cssda {
   pointer-events: all;
-  width: 60px;
+  width: 190px;
   height: 0;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  margin-right: -25px;
+  transition: width 0.25s ease;
   img {
     width: 100%;
-    max-width: 100%;
+    max-width: 32%;
     height: auto;
+    transition: transform 0.25s ease;
+    &:hover {
+      transform: scale(1.3);
+    }
+  }
+  &.visible {
+    width: 160px;
+  }
+  @include media-breakpoint-down(lg) {
+    margin-right: 0;
+    transform: translateX(4px);
+    img {
+      &:hover {
+      transform: scale(1.8);
+      }
+    }
   }
   @include media-breakpoint-down(sm) {
   }
